@@ -1,6 +1,6 @@
 import React from 'react';
 import { Map, Navigation, Search, Settings, Users } from 'lucide-react';
-import '../../styles/IconStrip.css';
+import style from '../../styles/IconStrip.module.css';
 
 const icons = [
     { icon: Map, label: 'Заказчикам' },
@@ -12,14 +12,14 @@ const icons = [
 
 const IconStrip = () => {
     return (
-        <div className="icon-strip">
-            <div className="icon-list">
+        <div className={style.iconStrip}>
+            <div className={style.iconList}>
                 {icons.map((item, index) => {
                     const Icon = item.icon;
                     return (
-                        <div key={index} className="icon-item">
-                            <Icon className="icon" />
-                            <span className="icon-label">{item.label}</span>
+                        <div key={index} className={style.iconItem}>
+                            <Icon className={style.icon} />
+                            <span className={style.iconLabel}>{item.label}</span>
                         </div>
                     );
                 })} 

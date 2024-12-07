@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/MainContent.css';
+import style from '../../styles/MainContent.module.css';
 
 const features = [
     {
@@ -24,26 +24,26 @@ const infoCards = [
 
 const MainContent = () => {
     return (
-        <div className="main-content">
-            <div className="features-grid">
+        <div className={style.mainContent}>
+            <div className={style.featuresGrid}>
                 {features.map((feature, index) => (
-                    <div key={index} className="feature-item">
+                    <div key={index} className={style.featureItem}>
                         <img
                             src={feature.image}
                             alt={feature.title}
-                            className="feature-image"
+                            className={style.featureImage}
                         />
-                        <span className="feature-title">{feature.title}</span>
+                        <span className={style.featureTitle}>{feature.title}</span>
                     </div>
                 ))}
             </div>
 
-            <div className="info-cards">
+            <div className={style.infoCards}>
                 {infoCards.map((card, index) => (
-                    <div key={index} className="info-card">
-                        <h3 className="info-card-title">{card.title}</h3>
-                        <p className="info-card-description">{card.description}</p>
-                        <p className="geo">{card.typeOfTask}</p>
+                    <div key={index} className={style.infoCard}>
+                        <h3 className={style.infoCardTitle}>{card.title}</h3>
+                        <p className={style.infoCardDescription}>{card.description}</p>
+                        <p className={style.geo}>{card.typeOfTask}</p>
                     </div>
                 ))}
             </div>
