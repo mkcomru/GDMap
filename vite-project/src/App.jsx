@@ -1,14 +1,14 @@
-import React from 'react';
 import MapComponent from './components/map/map';
-import './styles/App.css';
 import SideBar from './components/sideBar/SideBarComponent';
+// import Auth from './components/Auth';
+import './styles/App.css';
 
 function App() {
-
   return (
     <div className="App">
       <SideBar />
       <MapComponent />
+      {/* <Auth /> */}
     </div>
   );
 }
