@@ -1,8 +1,7 @@
-import React from 'react';
 import Header from './Header';
 import IconStrip from './IconStrip';
 import MainContent from './MainContent';
-import '../../styles/SideBar.css';
+import './SideBar.css';
 
 const SideBar = () => {
     return (

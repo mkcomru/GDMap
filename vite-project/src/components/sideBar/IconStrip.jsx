@@ -1,6 +1,5 @@
-import React from 'react';
 import { Map, Navigation, Search, Settings, Users } from 'lucide-react';
-import style from '../../styles/IconStrip.module.css';
+import style from './IconStrip.module.css';
 
 const icons = [
     { icon: Map, label: 'Заказчикам' },

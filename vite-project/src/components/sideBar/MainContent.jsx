@@ -1,5 +1,4 @@
-import React from 'react';
-import style from '../../styles/MainContent.module.css';
+import style from './MainContent.module.css';
 
 const features = [
     {

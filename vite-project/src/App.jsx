@@ -1,14 +1,14 @@
 import MapComponent from './components/map/map';
 import SideBar from './components/sideBar/SideBarComponent';
-// import Auth from './components/Auth';
 import './styles/App.css';
+import AllRegisterAndAuth from './components/Auth/AllRegisterAndAuth';
 
 function App() {
   return (
     <div className="App">
+      {/* <AllRegisterAndAuth /> */}
       <SideBar />
       <MapComponent />
-      {/* <Auth /> */}
     </div>
   );
 }

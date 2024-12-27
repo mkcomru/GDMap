@@ -1,17 +1,18 @@
 .mainContent {
-    width: 395px;
-    height: 900px;
-    margin: 0px;
+    box-sizing: border-box;
+    max-width: 395px;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: white;
 }
 
 .featuresGrid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 26px;
-    margin: 20px 21px 28px 16px;
+    gap: 1.625rem;
+    margin: 1.25rem 1.3125rem 1.75rem 1rem;
 }
 
 .featureItem {
@@ -29,19 +30,20 @@
 }
 
 .featureTitle {
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: medium;
     text-align: center;
     justify-content: center;
 }
 
 .infoCards {
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    width: 395px;
+    gap: 1rem;
+    width: 100%;
+    padding: 0px 1rem;
     overflow-y: auto;
-    margin: 0px;
 }
 
 .infoCards::-webkit-scrollbar {
@@ -63,31 +65,30 @@
 }
 
 .infoCard {
-    width: 350px;
-    height: 100px;
-    margin: 0px 22px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    min-height: 100px;
+    padding-left: 10px;
     background-color: #D9D9D9;
     border-radius: 8px;
+    gap: 10px;
 }
 
 .infoCardTitle {
     font-weight: 500;
-    font-size: 14px;
-    width: 58px;
-    height: 19px;
-    margin: 0px;
-    padding: 10px 276px 7px 16px;
+    font-size: 1rem;
+    width: 100%;
 }
 
 .infoCardDescription {
-    font-size: 12px;
+    font-size: 0.75rem;
     color: #4b5563;
-    margin: 0px;
-    padding: 0px 0px 23px 16px
 }
 
 .geo {
-    font-size: 10px;
-    margin: 0px;
-    padding: 0px 0px 11px 16px;
+    font-size: 0.625rem;
 }
