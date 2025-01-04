@@ -1,18 +1,25 @@
-import MapComponent from './components/map/map';
-import SideBar from './components/sideBar/SideBarComponent';
-import './styles/App.css';
-import AllRegisterAndAuth from './components/Auth/AllRegisterAndAuth';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home/Home';
+import Dashboard from './pages/Dashboard/Dashboard';
+import Login from './pages/Auth/Login';
+import Register from './pages/Auth/Register';
+import ForgotPassword from './pages/Auth/ForgotPassword';
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+import './index.css'
 
 function App() {
   return (
-    <div className="App">
-      {/* <AllRegisterAndAuth /> */}
-      <SideBar />
-      <MapComponent />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+      </Routes>
+    </BrowserRouter>
+    // <Dashboard />
   );
 }
 
 export default App;
-
-// привет мир проверка н пуш в гит
