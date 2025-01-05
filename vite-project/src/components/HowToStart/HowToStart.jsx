@@ -27,13 +27,11 @@ const HowToStart = forwardRef((props, ref) => {
         <section ref={ref} className={styles.howToStart}>
             
             <div className={styles.mapPreview}>
-                <button>
-                    <img 
-                        src={howToStartImage} 
-                        alt="Map"
-                        className={styles.mapImage}
-                    />
-                </button>
+                <img 
+                    src={howToStartImage} 
+                    alt="Map"
+                    className={styles.mapImage}
+                />
             </div>
             <h2 className={styles.title}>Как начать?</h2>
 
