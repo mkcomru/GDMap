@@ -19,8 +19,8 @@ function App() {
     //     <Route path="/forgot-password" element={<ForgotPassword />} />
     //   </Routes>
     // </BrowserRouter>
-    // <Dashboard />
-    <Profile />
+    <Dashboard />
+    // <Profile />
   );
 }
 

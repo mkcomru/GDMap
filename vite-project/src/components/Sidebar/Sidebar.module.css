@@ -21,11 +21,12 @@
 
 .content {
     display: flex;
-    height: calc(100% - 60px);
+    height: calc(100% - 91px);
     gap: 20px;
 }
 
 .iconMenu {
+    max-width: 120px;
     min-width: 80px;
     padding: 20px;
     background-color: #fff;
@@ -55,6 +56,11 @@
     font-size: 24px;
     margin-bottom: 5px;
     color: #666;
+}
+
+.labelText {
+    word-break: break-all;
+    text-align: center;
 }
 
 .rightSection {

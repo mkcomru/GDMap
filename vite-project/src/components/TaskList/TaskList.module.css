@@ -1,0 +1,25 @@
+.taskList {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.taskItem {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.taskItem h3 {
+    font-size: 1.125rem;
+    color: #333;
+    margin: 0 0 0.5rem 0;
+}
+
+.address {
+    font-size: 0.875rem;
+    color: #666;
+    margin: 0;
+}

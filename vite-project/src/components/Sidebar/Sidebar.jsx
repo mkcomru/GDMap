@@ -1,15 +1,37 @@
 import styles from './Sidebar.module.css';
-import { FaHome, FaUser, FaCog, FaChartBar, FaEnvelope } from 'react-icons/fa';
+import { FaHome, FaUser, FaPlus, FaTasks, FaCheckSquare } from 'react-icons/fa';
+import TaskList from '../TaskList/TaskList';
+import TaskModal from '../TaskModal/TaskModal';
+import { useState } from 'react';
 
 const sidebarIcons = [
-    { icon: FaHome, label: 'Home' },
-    { icon: FaUser, label: 'Profile' },
-    { icon: FaCog, label: 'Settings' },
-    { icon: FaChartBar, label: 'Analytics' },
-    { icon: FaEnvelope, label: 'Messages' }
+    { icon: FaHome, label: 'Главная' },
+    { icon: FaUser, label: 'Профиль' },
+    { icon: FaPlus, label: 'Добавить задание' },
+    { icon: FaTasks, label: 'Здания' },
+    { icon: FaCheckSquare, label: 'Активные задания' }
 ];
 
 const Sidebar = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [tasks, setTasks] = useState([]);
+
+    // Mock user data - in a real app, this would come from authentication
+    const mockUser = {
+        name: 'Максим Гребенщиков',
+        rating: 5.0
+    };
+
+    const handleAddTask = (newTask) => {
+        setTasks([newTask, ...tasks]);
+    };
+
+    const handleIconClick = (label) => {
+        if (label === 'Добавить задание') {
+            setIsModalOpen(true);
+        }
+    };
+
     return (
         <div className={styles.sidebar}>
             <h1 className={styles.title}>Карта добрых дел</h1>
@@ -17,36 +39,19 @@ const Sidebar = () => {
             <div className={styles.content}>
                 <div className={styles.iconMenu}>
                     {sidebarIcons.map(({ icon: Icon, label }) => (
-                        <div key={label} className={styles.iconItem}>
+                        <div key={label} className={styles.iconItem} onClick={() => handleIconClick(label)}>
                             <Icon className={styles.icon} />
-                            <span>{label}</span>
+                            <span className={styles.labelText}>{label}</span>
                         </div>
                     ))}
                 </div>
         
                 <div className={styles.rightSection}>
-                    <div className={styles.imageGrid}>
-                        {[1, 2, 3].map((num) => (
-                            <div key={num} className={styles.imageCard}>
-                                <img 
-                                    src={`https://picsum.photos/200/150?random=${num}`} 
-                                    alt={`Card ${num}`} 
-                                />
-                                <p>Image Title {num}</p>
-                            </div>
-                        ))}
-                    </div>
-        
-                    <div className={styles.taskList}>
-                        {[...Array(10)].map((_, index) => (
-                            <div key={index} className={styles.taskItem}>
-                                <h3>Task {index + 1}</h3>
-                                <p>Task description goes here</p>
-                            </div>
-                        ))}
-                    </div>
+                    <TaskList tasks={tasks} />
                 </div>
             </div>
+
+            {isModalOpen && (<TaskModal user={mockUser} onClose={() => setIsModalOpen(false)} onSubmit={handleAddTask} />)}
         </div>
     );
 };

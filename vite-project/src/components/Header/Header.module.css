@@ -59,7 +59,7 @@
 }
 
 .loginBtn:hover {
-    background-color: #7CB540 ;
+    background-color: #679a30 ;
     color: white;
 }
 
@@ -69,7 +69,7 @@
 }
 
 .registerBtn:hover {
-    background-color: #7CB540 ;
+    background-color: #679a30 ;
 }
 
 @media (max-width: 768px) {
