@@ -6,7 +6,7 @@ import TaskDescription from './TaskDescription';
 import styles from './TaskDetails.module.css';
 import PropTypes from 'prop-types';
 
-const TaskDetails = ({ task, onClose, onAccept }) => {
+const TaskDetails = ({ task, onClose, onAccept, onTaskComplete, onTaskConfirm }) => {
     const [showChat, setShowChat] = useState(false);
     const [showConfirm, setShowConfirm] = useState(false);
     const [showDescription, setShowDescription] = useState(false);
@@ -16,13 +16,18 @@ const TaskDetails = ({ task, onClose, onAccept }) => {
         setShowChat(true);
     };
 
+    const handleTaskComplete = (taskId) => {
+        onTaskComplete(taskId);
+        setShowChat(false); // Close chat window when task is marked as completed
+    };
+
     if (showChat) {
         return (
             <div className={styles.overlay}>
                 <div className={styles.modal}>
                     {showDescription ? (
                         <div className={styles.descriptionView}>
-                            <button className={styles.backButton} onClick={() => setShowDescription(false)}>
+                            <button className={styles.backButton}  onClick={() => setShowDescription(false)}>
                                 <FaArrowLeft />
                             </button>
                             <TaskDescription task={task} />
@@ -32,11 +37,19 @@ const TaskDetails = ({ task, onClose, onAccept }) => {
                             <div className={styles.chatHeader}>
                                 <h2>Чат с заказчиком</h2>
                                 <div className={styles.chatActions}>
-                                    <button className={styles.descriptionButton} onClick={() => setShowDescription(true)}>Описание</button>
-                                    <button className={styles.declineButton} onClick={() => setShowConfirm(true)}>Отказаться</button>
+                                    <button className={styles.descriptionButton} onClick={() => setShowDescription(true)}>
+                                        Описание
+                                    </button>
+                                    <button className={styles.declineButton} onClick={() => setShowConfirm(true)}>
+                                        Отказаться
+                                    </button>
                                 </div>
                             </div>
-                            <Chat taskId={task.id} />
+                            <Chat 
+                                taskId={task.id} 
+                                onTaskComplete={handleTaskComplete}
+                                isPendingConfirmation={task.isPendingConfirmation}
+                            />
                         </div>
                     )}
                 </div>
@@ -64,8 +77,12 @@ const TaskDetails = ({ task, onClose, onAccept }) => {
                 <TaskDescription task={task} />
 
                 <div className={styles.buttons}>
-                    <button className={styles.declineButton} onClick={() => setShowConfirm(true)}>Отказаться</button>
-                    <button className={styles.acceptButton} onClick={handleAccept}>Принять</button>
+                    <button className={styles.declineButton} onClick={() => setShowConfirm(true)}>
+                        Отказаться
+                    </button>
+                    <button className={styles.acceptButton} onClick={handleAccept}>
+                        Принять
+                    </button>
                 </div>
             </div>
 
@@ -82,12 +99,15 @@ const TaskDetails = ({ task, onClose, onAccept }) => {
 
 TaskDetails.propTypes = {
     task: PropTypes.shape({
-        id: PropTypes.string,
+        id: PropTypes.string.isRequired,
         shortDescription: PropTypes.string.isRequired,
-        fullDescription: PropTypes.string.isRequired
+        fullDescription: PropTypes.string.isRequired,
+        isPendingConfirmation: PropTypes.bool
     }).isRequired,
     onClose: PropTypes.func.isRequired,
-    onAccept: PropTypes.func.isRequired
+    onAccept: PropTypes.func.isRequired,
+    onTaskComplete: PropTypes.func.isRequired,
+    onTaskConfirm: PropTypes.func.isRequired
 };
 
 export default TaskDetails;

@@ -9,9 +9,11 @@ const TaskModal = ({ user, onClose, onSubmit }) => {
     const handleFormSubmit = (data) => {
         onSubmit({
             ...data,
+            id: Date.now(), // Generate unique ID
             userName: user.name,
             userRating: user.rating,
             createdAt: new Date().toISOString(),
+            createdByCurrentUser: true, // Mark as created by current user
             status: 'active'
         });
         onClose();
@@ -63,8 +65,12 @@ const TaskModal = ({ user, onClose, onSubmit }) => {
                     </div>
 
                     <div className={styles.buttons}>
-                        <button type="button" onClick={onClose} className={styles.cancelButton}>Отмена</button>
-                        <button type="submit" className={styles.submitButton}>Добавить задание</button>
+                        <button type="button" onClick={onClose} className={styles.cancelButton}>
+                            Отмена
+                        </button>
+                        <button type="submit" className={styles.submitButton}>
+                        Добавить задание
+                        </button>
                     </div>
                 </form>
             </div>

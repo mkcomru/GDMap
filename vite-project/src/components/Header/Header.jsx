@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { FaUser } from 'react-icons/fa';
 import styles from './Header.module.css';
 import Logo from '../Logo/Logo';
+import PropTypes from 'prop-types';
 
 const Header = ({ onAboutClick, onContactClick, onMapClick }) => {
     return (
@@ -9,7 +10,6 @@ const Header = ({ onAboutClick, onContactClick, onMapClick }) => {
             <div className={styles.leftSection}>
                 <Logo />
                 <nav className={styles.navigation}>
-                    {/* <Link to="/">Главная</Link> */}
                     <Link onClick={onAboutClick}>О проекте</Link>
                     <Link onClick={onContactClick}>Контакты</Link>
                     <Link onClick={onMapClick}>Карта</Link>
@@ -25,6 +25,12 @@ const Header = ({ onAboutClick, onContactClick, onMapClick }) => {
             </div>
         </header>
     );
+};
+
+Header.propTypes = {
+    onAboutClick: PropTypes.func.isRequired,
+    onContactClick: PropTypes.func.isRequired,
+    onMapClick: PropTypes.func.isRequired
 };
 
 export default Header;

@@ -1,4 +1,4 @@
-.chat {
+.chatContainer {
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -8,6 +8,7 @@
     flex: 1;
     overflow-y: auto;
     padding: 1rem;
+    margin-bottom: 1rem;
 }
 
 .message {
@@ -43,11 +44,44 @@
     right: 0;
 }
 
+.bottomSection {
+    border-top: 1px solid #eee;
+    padding: 1rem;
+    background-color: white;
+}
+
+.completeButton {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    background-color: #7CB540;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: background-color 0.2s;
+}
+
+.completeButton:hover {
+    background-color: #679a30;
+}
+
+.pendingConfirmation {
+    text-align: center;
+    padding: 0.75rem;
+    background-color: #fff3cd;
+    color: #856404;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
 .inputArea {
     display: flex;
     gap: 0.5rem;
-    padding: 1rem;
-    border-top: 1px solid #eee;
 }
 
 .inputArea input {

@@ -1,5 +1,6 @@
 import { FaStar } from 'react-icons/fa';
 import styles from './TaskDescription.module.css';
+import PropTypes from 'prop-types';
 
 const TaskDescription = ({ task }) => {
     return (
@@ -31,6 +32,16 @@ const TaskDescription = ({ task }) => {
             </div>
         </div>
     );
+};
+
+TaskDescription.propTypes = {
+    task: PropTypes.shape({
+        userName: PropTypes.string.isRequired,
+        userRating: PropTypes.number.isRequired,
+        address: PropTypes.string.isRequired,
+        shortDescription: PropTypes.string.isRequired,
+        fullDescription: PropTypes.string.isRequired
+    }).isRequired
 };
 
 export default TaskDescription;
