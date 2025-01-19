@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './Sidebar.module.css';
 import { FaHome, FaUser, FaPlus, FaTasks, FaCheckSquare } from 'react-icons/fa';
 import TaskModal from '../TaskModal/TaskModal';
@@ -6,15 +7,17 @@ import TaskList from '../TaskList/TaskList';
 import TasksModal from '../TasksModal/TasksModal';
 import ActiveTasksModal from '../TasksModal/ActiveTasksModal';
 
+
 const sidebarIcons = [
-    { icon: FaHome, label: 'Главная' },
-    { icon: FaUser, label: 'Профиль' },
+    { icon: FaHome, label: 'Главная', path: '/' },
+    { icon: FaUser, label: 'Профиль', path: '/profile' },
     { icon: FaPlus, label: 'Добавить задание' },
     { icon: FaTasks, label: 'Задания' },
     { icon: FaCheckSquare, label: 'Активные задания' }
 ];
 
 const Sidebar = () => {
+    const navigate = useNavigate();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isTasksModalOpen, setIsTasksModalOpen] = useState(false);
     const [isActiveTasksModalOpen, setIsActiveTasksModalOpen] = useState(false);
@@ -78,8 +81,10 @@ const Sidebar = () => {
         ));
     };
 
-    const handleIconClick = (label) => {
-        if (label === 'Добавить задание') {
+    const handleIconClick = (label, path) => {
+        if (path) {
+            navigate(path);
+        } else if (label === 'Добавить задание') {
             setIsModalOpen(true);
         } else if (label === 'Задания') {
             setIsTasksModalOpen(true);
@@ -93,11 +98,11 @@ const Sidebar = () => {
             <h1 className={styles.title}>Dashboard</h1>
             <div className={styles.content}>
                 <div className={styles.iconMenu}>
-                    {sidebarIcons.map(({ icon: Icon, label }) => (
+                    {sidebarIcons.map(({ icon: Icon, label, path }) => (
                         <div 
                             key={label} 
                             className={styles.iconItem}
-                            onClick={() => handleIconClick(label)}
+                            onClick={() => handleIconClick(label, path)}
                         >
                             <Icon className={styles.icon} />
                             <span>{label}</span>

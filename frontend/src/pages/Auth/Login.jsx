@@ -1,17 +1,26 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { useAuth } from '../../components/context/AuthContext';
 import styles from './Auth.module.css';
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [isLoading, setIsLoading] = useState(false);
+    const { login } = useAuth();
+    const navigate = useNavigate();
 
     const onSubmit = async (data) => {
         setIsLoading(true);
+        try {
         // Here you would implement the actual login logic
-        console.log(data);
-        setIsLoading(false);
+            await login(data);
+            navigate('/');
+        } catch (error) {
+            console.error('Login failed:', error);
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     return (
@@ -58,7 +67,7 @@ const Login = () => {
 
                 <div className={styles.links}>
                     <Link to="/forgot-password">Forgot Password?</Link>
-                    <Link to="/register">Don't have an account? Register</Link>
+                    <Link to="/register">Don#39;t have an account? Register</Link>
                 </div>
             </div>
         </div>

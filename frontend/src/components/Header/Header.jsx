@@ -3,8 +3,11 @@ import { FaUser } from 'react-icons/fa';
 import styles from './Header.module.css';
 import Logo from '../Logo/Logo';
 import PropTypes from 'prop-types';
+import { useAuth } from '../../components/context/AuthContext'
 
 const Header = ({ onAboutClick, onContactClick, onMapClick }) => {
+    const { isAuthenticated, logout } = useAuth();
+    
     return (
         <header className={styles.header}>
             <div className={styles.leftSection}>
@@ -17,11 +20,21 @@ const Header = ({ onAboutClick, onContactClick, onMapClick }) => {
             </div>
 
             <div className={styles.rightSection}>
-                <FaUser className={styles.profileIcon} />
-                <div className={styles.authButtons}>
-                    <Link to="/login" className={styles.loginBtn}>Войти</Link>
-                    <Link to="/register" className={styles.registerBtn}>Зарегистрироваться</Link>
-                </div>
+                {isAuthenticated ? (
+                    <>
+                        <Link to="/profile">
+                            <FaUser className={styles.profileIcon} />
+                        </Link>
+                        <button onClick={logout} className={styles.logoutBtn}>
+                            Выйти
+                        </button>
+                    </>
+                ) : (
+                    <div className={styles.authButtons}>
+                        <Link to="/login" className={styles.loginBtn}>Войти</Link>
+                        <Link to="/register" className={styles.registerBtn}>Зарегистрироваться</Link>
+                    </div>
+                )}
             </div>
         </header>
     );

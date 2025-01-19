@@ -1,17 +1,26 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { useAuth } from '../../components/context/AuthContext';
 import styles from './Auth.module.css';
 
 const Register = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [isLoading, setIsLoading] = useState(false);
+    const { login } = useAuth();
+    const navigate = useNavigate();
 
     const onSubmit = async (data) => {
         setIsLoading(true);
-        // Here you would implement the actual registration logic
-        console.log(data);
-        setIsLoading(false);
+        try {
+            // Here you would implement the actual registration logic
+            await login(data); // Auto-login after registration
+            navigate('/');
+        } catch (error) {
+            console.error('Registration failed:', error);
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     return (
