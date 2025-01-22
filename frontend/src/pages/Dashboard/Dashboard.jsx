@@ -1,12 +1,12 @@
 import Sidebar from '../../components/Sidebar/Sidebar';
-import Map from '../../components/Map/Map';
+import MapComponent from '../../components/Map/MapComponent';
 import styles from './Dashboard.module.css';
 
 const Dashboard = () => {
     return (
         <div className={styles.container}>
             <Sidebar />
-            <Map />
+            <MapComponent />
         </div>
     );
 };

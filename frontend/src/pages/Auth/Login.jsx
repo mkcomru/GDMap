@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useAuth } from '../../components/context/AuthContext';
 import styles from './Auth.module.css';
+import {FaArrowLeft} from "react-icons/fa";
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -27,6 +28,11 @@ const Login = () => {
         <div className={styles.authContainer}>
             <div className={styles.authCard}>
                 <h1>Login</h1>
+                <Link to="/">
+                    <button className={styles.backbtn} to="/">
+                        <FaArrowLeft />
+                    </button>
+                </Link>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className={styles.formGroup}>
                         <label htmlFor="email">Email</label>
@@ -49,7 +55,7 @@ const Login = () => {
                         <input
                             type="password"
                             id="password"
-                            {...register('password', { 
+                            {...register('password', {
                                 required: 'Password is required',
                                 minLength: {
                                     value: 6,
@@ -67,7 +73,7 @@ const Login = () => {
 
                 <div className={styles.links}>
                     <Link to="/forgot-password">Forgot Password?</Link>
-                    <Link to="/register">Don#39;t have an account? Register</Link>
+                    <Link to="/register">Don`t have an account? Register</Link>
                 </div>
             </div>
         </div>

@@ -21,7 +21,7 @@ const ForgotPassword = () => {
             <div className={styles.authContainer}>
                 <div className={styles.authCard}>
                     <h1>Check Your Email</h1>
-                    <p>We've sent password reset instructions to your email address.</p>
+                    <p>We`ve sent password reset instructions to your email address.</p>
                     <div className={styles.links}>
                         <Link to="/login">Back to Login</Link>
                     </div>

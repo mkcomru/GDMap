@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useAuth } from '../../components/context/AuthContext';
 import styles from './Auth.module.css';
+import axios from 'axios';
+import {FaArrowLeft} from "react-icons/fa";
 
 const Register = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -10,24 +12,52 @@ const Register = () => {
     const { login } = useAuth();
     const navigate = useNavigate();
 
-    const onSubmit = async (data) => {
-        setIsLoading(true);
+    // const onSubmit = async (data) => {
+    //     setIsLoading(true);
+    //     data.preventDefault();
+    //     try {
+    //         const response = await axios.post('http://127.0.0.1:8000/api/hello', {
+    //             text: "trfgyhujiko"
+    //         });
+    //         // Here you would implement the actual registration logic
+    //         // await login(data); // Auto-login after registration
+    //         // navigate('/');
+    //         console.log("все ок", response.data)
+    //     } catch (error) {
+    //         console.error('Registration failed:', error);
+    //     } finally {
+    //         setIsLoading(false);
+    //     }
+    // };
+
+    const sendHello = async () => {
         try {
-            // Here you would implement the actual registration logic
-            await login(data); // Auto-login after registration
-            navigate('/');
+            // Отправляем POST запрос
+            const response = await axios.post('http://127.0.0.1:8000/api/register', {
+                text: "Привет от React!"
+            }).then((response) => {
+                console.log("все ок", response.data)
+            });
+            
+            // Выводим ответ в консоль
+            console.log('Пришёл ответ:', response.data);
+            
         } catch (error) {
-            console.error('Registration failed:', error);
-        } finally {
-            setIsLoading(false);
+            console.log('Ошибка:', error);
         }
     };
+
 
     return (
         <div className={styles.authContainer}>
             <div className={styles.authCard}>
                 <h1>Register</h1>
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <Link to="/">
+                    <button className={styles.backbtn} to="/">
+                        <FaArrowLeft />
+                    </button>
+                </Link>
+                <form onSubmit={handleSubmit(sendHello)}>
                     <div className={styles.formGroup}>
                         <label htmlFor="fullName">Full Name</label>
                         <input
@@ -92,8 +122,8 @@ const Register = () => {
                         {errors.password && <span className={styles.error}>{errors.password.message}</span>}
                     </div>
 
-                    <button type="submit" disabled={isLoading}>
-                        {isLoading ? 'Loading...' : 'Register'}
+                    <button onClick={() => handleSubmit(sendHello)}>
+                        Register
                     </button>
                 </form>
 

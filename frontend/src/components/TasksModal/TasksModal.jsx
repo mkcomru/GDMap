@@ -48,7 +48,7 @@ const TasksModal = ({ tasks, onClose, onTaskComplete, onTaskConfirm }) => {
                                     <p className={styles.address}>{task.address}</p>
                                     {task.isPendingConfirmation && (
                                         <div className={styles.pendingBadge}>
-                                        Ожидает подтверждения
+                                            Ожидает подтверждения
                                         </div>
                                     )}
                                 </div>

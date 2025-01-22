@@ -6,6 +6,8 @@ import styles from './Profile.module.css';
 import ProfileImage from '../../img/photo_2023-07-19_22-18-15.jpg'
 import EditModal from './components/EditModal';
 import { useState } from 'react';
+import {FaArrowLeft} from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
   // Mock user data (replace with real data later)
@@ -31,6 +33,11 @@ const Profile = () => {
         setUser({ ...user, avatar: newAvatarUrl });
     }
 
+    const navigate = useNavigate();
+    const goToPage = () => {
+        navigate(-1);
+    }
+
     return (
         <div className={styles.profileContainer}>
             <div className={styles.mainContent}>
@@ -46,6 +53,9 @@ const Profile = () => {
                 <div className={styles.ratingSection}>
                     <UserRating rating={user.rating} />
                     <button className={styles.editButton} onClick={() => setIsEditModalOpen(true)}>Редактировать</button>
+                    <button className={styles.backbtn} onClick={goToPage}>
+                        <FaArrowLeft />
+                    </button>
                 </div>
             </div>
             {isEditModalOpen && (

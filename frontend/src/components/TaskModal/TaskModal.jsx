@@ -69,7 +69,7 @@ const TaskModal = ({ user, onClose, onSubmit }) => {
                             Отмена
                         </button>
                         <button type="submit" className={styles.submitButton}>
-                        Добавить задание
+                            Добавить задание
                         </button>
                     </div>
                 </form>

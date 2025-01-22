@@ -95,7 +95,8 @@ const Sidebar = () => {
 
     return (
         <div className={styles.sidebar}>
-            <h1 className={styles.title}>Dashboard</h1>
+            <h1 className={styles.title}>Карта Добрых Дел</h1>
+            <p className={styles.description}>Владивосток</p>
             <div className={styles.content}>
                 <div className={styles.iconMenu}>
                     {sidebarIcons.map(({ icon: Icon, label, path }) => (

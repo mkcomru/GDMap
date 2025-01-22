@@ -7,6 +7,12 @@
     padding: 20px;
 }
 
+.backbtn {
+    background-color: #7CB540;
+    align-content: center;
+    margin-bottom: 20px;
+}
+
 .authCard {
     background: white;
     padding: 2rem;
@@ -48,7 +54,7 @@
 
 .formGroup input:focus {
     outline: none;
-    border-color: #4a90e2;
+    border-color: #7CB540;
     box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
 }
 
@@ -62,7 +68,7 @@
 button {
     width: 100%;
     padding: 0.75rem;
-    background-color: #4a90e2;
+    background-color: #7CB540;
     color: white;
     border: none;
     border-radius: 5px;
@@ -72,7 +78,7 @@ button {
 }
 
 button:hover {
-    background-color: #357abd;
+    background-color: #679a30;
 }
 
 button:disabled {
@@ -89,7 +95,7 @@ button:disabled {
 }
 
 .links a {
-    color: #4a90e2;
+    color: #7CB540;
     text-decoration: none;
 }
 

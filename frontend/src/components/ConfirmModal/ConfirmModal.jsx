@@ -1,4 +1,5 @@
 import styles from './ConfirmModal.module.css';
+import PropTypes from 'prop-types';
 
 const ConfirmModal = ({ message, onConfirm, onCancel }) => {
     return (
@@ -13,5 +14,12 @@ const ConfirmModal = ({ message, onConfirm, onCancel }) => {
         </div>
     );
 };
+
+ConfirmModal.propTypes = {
+    message: PropTypes.string.isRequired,
+    onConfirm: PropTypes.func.isRequired,
+    onCancel: PropTypes.func.isRequired
+};
+
 
 export default ConfirmModal;
