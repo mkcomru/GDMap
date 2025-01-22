@@ -12,7 +12,7 @@ const SocialLinks = () => {
             <a href="https://t.me/GDMapForSomeHelp" target="_blank" rel="noopener noreferrer">
                 <FaTelegram className={styles.icon} />
             </a>
-            <Link to="/catnmouse">
+            <Link to="/placeholder">
                 <FaInstagram className={styles.icon} />
             </Link>
         </div>

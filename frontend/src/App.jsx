@@ -9,13 +9,15 @@ import { AuthProvider } from './components/context/AuthContext';
 import './index.css'
 import ForgotPassword from "./pages/Auth/ForgotPassword.jsx";
 import AboutUs from "./components/AboutUs/AboutUs.jsx";
-import Zaglushka from "./components/Zaglushka/Zaglushka.jsx";
+import CatNMouse from "./components/CatNMouse/CatNMouse.jsx";
+import InstZaglushka from "./components/InstZaglushka/InstZaglushka.jsx";
+
 
 function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
-        {/*<Zaglushka />*/}
+        {/*<CatNMouse />*/}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
@@ -24,7 +26,8 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/about" element={<AboutUs />} />
-          <Route path="/catnmouse" element={<Zaglushka />} />
+          <Route path="/catnmouse" element={<CatNMouse />} />
+          <Route path="/placeholder" element={<InstZaglushka />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>

@@ -1,8 +1,8 @@
-import styles from './Zaglushka.module.css'
+import styles from './CatNMouse.module.css'
 import { useEffect, useRef } from 'react'
 import catImage from '../../img/catImg.png';
 
-const Zaglushka = () => {
+const CatNMouse = () => {
     const catRef = useRef(null);
 
     useEffect(() => {
@@ -42,4 +42,4 @@ const Zaglushka = () => {
     );
 };
 
-export default Zaglushka;
+export default CatNMouse;
