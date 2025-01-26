@@ -1,6 +1,7 @@
 import styles from './AboutUs.module.css';
 import {FaArrowLeft, FaInstagram, FaTelegram, FaVk} from "react-icons/fa";
 import {useNavigate} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const AboutUs = () => {
 
@@ -65,9 +66,9 @@ const AboutUs = () => {
                 <a href="https://t.me/GDMapForSomeHelp" target="_blank" rel="noopener noreferrer">
                     <FaTelegram className={styles.icon}/>
                 </a>
-                <a href="../../" target="_blank" rel="noopener noreferrer">
+                <Link to="/placeholder">
                     <FaInstagram className={styles.icon}/>
-                </a>
+                </Link>
                 <button className={styles.backbtn} onClick={goToPage}>
                     <FaArrowLeft/>
                 </button>

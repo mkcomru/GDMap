@@ -5,13 +5,18 @@ import ConfirmModal from '../ConfirmModal/ConfirmModal';
 import TaskDescription from './TaskDescription';
 import styles from './TaskDetails.module.css';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router';
 
-const TaskDetails = ({ task, onClose, onAccept, onTaskComplete, onTaskConfirm }) => {
+const TaskDetails = ({ task, onClose, onAccept, onTaskComplete }) => {
     const [showChat, setShowChat] = useState(false);
     const [showConfirm, setShowConfirm] = useState(false);
     const [showDescription, setShowDescription] = useState(false);
 
+    const navigate = useNavigate();
     const handleAccept = () => {
+        if (task.id === 1) {
+            navigate('/catnmouse');
+        }
         onAccept(task);
         setShowChat(true);
     };

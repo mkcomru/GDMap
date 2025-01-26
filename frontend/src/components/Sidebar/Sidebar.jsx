@@ -21,21 +21,46 @@ const Sidebar = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isTasksModalOpen, setIsTasksModalOpen] = useState(false);
     const [isActiveTasksModalOpen, setIsActiveTasksModalOpen] = useState(false);
-    const [tasks, setTasks] = useState([]);
+    const [tasks, setTasks] = useState([{
+        id: 1,
+        userName: 'Мяу',
+        userRating: 5.0,
+        address: 'Кампус ДВФУ',
+        shortDescription: 'Мяу мяу мяу мяу',
+        fullDescription: 'Мяу мяу мяу мяу мяу мяу мяу мяу мяу мяу мяу',
+        isPendingConfirmation: false,
+        isCompleted: false,
+        createdByCurrentUser: true
+    }]);
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState(null);
 
     // Mock current user ID (replace with actual auth system later)
     const currentUserId = 'user123';
 
-    useEffect(() => {
-        const savedTasks = localStorage.getItem('tasks');
-        if (savedTasks) {
-            setTasks(JSON.parse(savedTasks));
-        }
-    }, []);
+    // Загрузка заданий с бэкенда
+    const fetchTasks = async () => {
+        setIsLoading(true);
+        setError(null);
 
+        try {
+            const response = await fetch('https://api.example.com/tasks');
+            if (!response.ok) {
+                throw new Error('Ошибка при загрузке заданий');
+            }
+            const data = await response.json();
+            setTasks(...tasks, data); // Обновляем состояние tasks
+        } catch (error) {
+            setError(error.message);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    // Загружаем задания при монтировании компонента
     useEffect(() => {
-        localStorage.setItem('tasks', JSON.stringify(tasks));
-    }, [tasks]);
+        fetchTasks();
+    }, []);
 
     const mockUser = {
         id: currentUserId,

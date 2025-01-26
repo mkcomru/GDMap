@@ -14,7 +14,8 @@ const CatNMouse = () => {
         };
 
         const handleMouseOver = () => {
-            alert('GameOver!');
+            // alert('GameOver!');
+            console.log('GameOver!');
         };
 
         document.addEventListener('mousemove', handleMouseMove);
